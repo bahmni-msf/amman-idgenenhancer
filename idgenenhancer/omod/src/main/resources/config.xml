@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<!-- Module Properties -->
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
+	<author>vohray</author>
+	<description>
+		${project.parent.description}
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
+	<require_version>${openMRSVersion}</require_version>
+	<require_modules>
+		<require_module>org.openmrs.module.webservices.rest</require_module>
+		<require_module>org.openmrs.module.idgen</require_module>
+		<require_module>org.openmrs.module.idgen.webservices</require_module>
+		<require_module>org.openmrs.module.emrapi</require_module>
+		<require_module>org.ict4h.openmrs.openmrs-atomfeed</require_module>
+		<require_module>org.bahmni.module.reference-data</require_module>
+		<require_module>org.openmrs.module.addresshierarchy</require_module>
+		<require_module>org.openmrs.module.uiframework</require_module>
+		<require_module>org.openmrs.module.bacteriology</require_module>
+		<require_module>org.openmrs.module.bedmanagement</require_module>
+		<require_module>org.openmrs.module.rulesengine</require_module>
+		<require_module>org.openmrs.module.episodes</require_module>
+	</require_modules>
+
+	<!-- / Module Properties -->
+
+	
+	<!-- Module Activator -->
+	<activator>${project.parent.groupId}.${project.parent.artifactId}.idgenenhancerActivator</activator>
+	
+	
+	<!-- Maps hibernate file's, if present -->
+	<mappingFiles>
+				
+		idgenenhancer.hbm.xml
+				
+	</mappingFiles>
+	<advice>
+		<point>org.openmrs.api.PatientService</point>
+		<class>org.openmrs.module.idgenenhancer.advice.BeforeSaveAdvice</class>
+	</advice>
+
+
+	<!-- Internationalization -->
+	<!-- All message codes should start with ${project.parent.artifactId}. -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+
+</module>
+
